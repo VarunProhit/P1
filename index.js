@@ -4,9 +4,11 @@ for (var i=0 ; i< no; i++)
   document.querySelectorAll(".drum")[i].addEventListener("click", function(){
     var innerHTML = this.innerHTML;
     makeSound(innerHTML);
+    buttonAnimation(innerHTML);
   });
   document.addEventListener("keypress",function(event){
     makeSound(event.key);
+      buttonAnimation(event.key);
   });
   function makeSound(key){
     switch (key) {
@@ -43,7 +45,12 @@ for (var i=0 ; i< no; i++)
     }
 
   }
+  function buttonAnimation(currentKey){
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+  setTimeout(function(){
+    activeButton.classList.remove("pressed");
+  },100);
+}
 
 }
-//  var audio = new Audio("sounds/tom-1.mp3");
-//  audio.play();
